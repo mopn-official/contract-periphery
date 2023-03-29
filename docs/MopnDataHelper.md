@@ -11,7 +11,24 @@ struct AvatarDataOutput {
   uint256 avatarId;
   uint256 COID;
   uint256 BombUsed;
+  uint256 totalClaimedMT;
+  uint256 inboxMT;
+  uint256 MTAW;
   uint32 tileCoordinate;
+}
+```
+
+### CollectionDataOutput
+
+```solidity
+struct CollectionDataOutput {
+  address contractAddress;
+  uint256 COID;
+  uint256 OnMapNum;
+  uint256 AvatarNum;
+  uint256 totalClaimedMT;
+  uint256 inboxMT;
+  uint256 MTAW;
 }
 ```
 
@@ -149,4 +166,24 @@ get avatars by coordinate array
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | avatarDatas | struct MopnDataHelper.AvatarDataOutput[] | avatar datas format struct AvatarDataOutput |
+
+### getBatchAvatarInboxMT
+
+```solidity
+function getBatchAvatarInboxMT(uint256[] avatarIds) public view returns (uint256[] inboxMTs)
+```
+
+### getCollectionInfo
+
+```solidity
+function getCollectionInfo(uint256 COID) public view returns (struct MopnDataHelper.CollectionDataOutput cData)
+```
+
+get collection contract, on map num, avatar num etc from IGovernance.
+
+### getBatchCollectionInfo
+
+```solidity
+function getBatchCollectionInfo(uint256[] COIDs) public view returns (struct MopnDataHelper.CollectionDataOutput[] cDatas)
+```
 

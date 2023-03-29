@@ -15,7 +15,20 @@ contract MopnDataHelper is Ownable {
         uint256 avatarId;
         uint256 COID;
         uint256 BombUsed;
+        uint256 totalClaimedMT;
+        uint256 inboxMT;
+        uint256 MTAW;
         uint32 tileCoordinate;
+    }
+
+    struct CollectionDataOutput {
+        address contractAddress;
+        uint256 COID;
+        uint256 OnMapNum;
+        uint256 AvatarNum;
+        uint256 totalClaimedMT;
+        uint256 inboxMT;
+        uint256 MTAW;
     }
 
     IGovernance governance;
@@ -49,6 +62,9 @@ contract MopnDataHelper is Ownable {
                 avatarData.COID
             );
             avatarData.BombUsed = avatar.getAvatarBombUsed(avatarId);
+            avatarData.totalClaimedMT = map.getAvatarTotalMinted(avatarId);
+            avatarData.inboxMT = map.getAvatarInboxMT(avatarId);
+            avatarData.MTAW = map.getAvatarMTAW(avatarId);
             avatarData.tileCoordinate = avatar.getAvatarCoordinate(avatarId);
         }
     }
@@ -160,6 +176,39 @@ contract MopnDataHelper is Ownable {
             avatarDatas[i] = getAvatarByAvatarId(
                 map.getTileAvatar(coordinates[i])
             );
+        }
+    }
+
+    function getBatchAvatarInboxMT(
+        uint256[] memory avatarIds
+    ) public view returns (uint256[] memory inboxMTs) {
+        inboxMTs = new uint256[](avatarIds.length);
+        for (uint256 i = 0; i < avatarIds.length; i++) {
+            inboxMTs[i] = map.getAvatarInboxMT(avatarIds[i]);
+        }
+    }
+
+    /**
+     * get collection contract, on map num, avatar num etc from IGovernance.
+     */
+    function getCollectionInfo(
+        uint256 COID
+    ) public view returns (CollectionDataOutput memory cData) {
+        cData.contractAddress = governance.getCollectionContract(COID);
+        cData.COID = COID;
+        cData.OnMapNum = governance.getCollectionOnMapNum(COID);
+        cData.AvatarNum = governance.getCollectionAvatarNum(COID);
+        cData.totalClaimedMT = map.getCollectionTotalMinted(COID);
+        cData.inboxMT = map.getCollectionInboxMT(COID);
+        cData.MTAW = map.getCollectionMTAW(COID);
+    }
+
+    function getBatchCollectionInfo(
+        uint256[] memory COIDs
+    ) public view returns (CollectionDataOutput[] memory cDatas) {
+        cDatas = new CollectionDataOutput[](COIDs.length);
+        for (uint256 i = 0; i < COIDs.length; i++) {
+            cDatas[i] = getCollectionInfo(COIDs[i]);
         }
     }
 }

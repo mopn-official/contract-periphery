@@ -1,5 +1,8 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("solidity-docgen");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {

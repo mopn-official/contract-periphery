@@ -1,7 +1,8 @@
 {
 	"dependencies": {
-		"@mopn/core": "0.0.3-alpha.3",
+		"@mopn/core": "0.0.3-alpha.5",
 		"@openzeppelin/contracts": "^4.8.2",
+		"dotenv": "^16.0.3",
 		"solidity-docgen": "0.6.0-beta.35"
 	},
 	"devDependencies": {
