@@ -1,0 +1,19 @@
+{
+    "contracts": [
+        "AvatarHelper"
+    ],
+    "TileMath": {
+        "address": "0xeb2832d1e2199BB1FDF64075429D0aBeF5E85410",
+        "verified": false
+    },
+    "AvatarHelper": {
+        "address": "0x37bB1D44C38e623321a957c6593F1Bba2828dF2f",
+        "verified": false,
+        "libraries": [
+            "TileMath"
+        ],
+        "constructparams": [
+            "0xe5d7239a5b3CBe910a45f25f4DF047cf19De37a7"
+        ]
+    }
+}

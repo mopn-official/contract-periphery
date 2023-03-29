@@ -1,0 +1,11 @@
+{
+	"dependencies": {
+		"@mopn/core": "0.0.3-alpha.3",
+		"@openzeppelin/contracts": "^4.8.2",
+		"solidity-docgen": "0.6.0-beta.35"
+	},
+	"devDependencies": {
+		"@nomicfoundation/hardhat-toolbox": "^2.0.2",
+		"hardhat": "^2.13.0"
+	}
+}
