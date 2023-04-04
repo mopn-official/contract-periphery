@@ -35,18 +35,22 @@ contract MopnDataHelper is Ownable {
     IAvatar avatar;
     IMap map;
 
-    constructor(address governanceContract) {
-        _setGovernanceContract(governanceContract);
+    constructor(address governanceContract_) {
+        _setGovernanceContract(governanceContract_);
     }
 
     function setGovernanceContract(
-        address governanceContract
+        address governanceContract_
     ) public onlyOwner {
-        _setGovernanceContract(governanceContract);
+        _setGovernanceContract(governanceContract_);
     }
 
-    function _setGovernanceContract(address governanceContract) internal {
-        governance = IGovernance(governanceContract);
+    function governanceContract() public view returns (address) {
+        return address(governance);
+    }
+
+    function _setGovernanceContract(address governanceContract_) internal {
+        governance = IGovernance(governanceContract_);
         avatar = IAvatar(governance.avatarContract());
         map = IMap(governance.mapContract());
     }
