@@ -54,12 +54,22 @@ contract MopnBatchHelper is Multicall, Ownable {
             "delegateWallets incorrect"
         );
 
-        for (uint256 i = 0; i < avatarIds.length; i++) {
-            governance.redeemAvatarInboxMT(
-                avatarIds[i],
-                delegateWallets[i],
-                vaults[i]
-            );
+        if (delegateWallets.length > 0) {
+            for (uint256 i = 0; i < avatarIds.length; i++) {
+                governance.redeemAvatarInboxMT(
+                    avatarIds[i],
+                    delegateWallets[i],
+                    vaults[i]
+                );
+            }
+        } else {
+            for (uint256 i = 0; i < avatarIds.length; i++) {
+                governance.redeemAvatarInboxMT(
+                    avatarIds[i],
+                    IAvatar.DelegateWallet.None,
+                    address(0)
+                );
+            }
         }
     }
 
