@@ -180,6 +180,7 @@ contract MopnDataHelper is Ownable {
             avatarDatas[i] = getAvatarByAvatarId(
                 map.getTileAvatar(coordinates[i])
             );
+            avatarDatas[i].tileCoordinate = coordinates[i];
         }
     }
 
