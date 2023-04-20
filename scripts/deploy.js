@@ -28,7 +28,13 @@ async function main() {
       }
 
       if (deployConf[contractName].constructparams) {
-        contract = await Contract.deploy(...deployConf[contractName].constructparams);
+        let constructparams = deployConf[contractName].constructparams;
+        for (let j = 0; j < constructparams.length; j++) {
+          if (deployConf[constructparams[j]]) {
+            constructparams[j] = deployConf[constructparams[j]].address;
+          }
+        }
+        contract = await Contract.deploy(...constructparams);
       } else {
         contract = await Contract.deploy();
       }
@@ -172,7 +178,7 @@ function saveConf(deployConf) {
     "./scripts/deployconf/" + hre.network.name + ".json",
     JSON.stringify(deployConf),
     "utf8",
-    function(err) {
+    function (err) {
       if (err) throw err;
     }
   );

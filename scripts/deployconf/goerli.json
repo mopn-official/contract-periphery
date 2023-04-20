@@ -9,17 +9,17 @@
         "verified": false
     },
     "Governance": {
-        "address": "0x43AB6f9f671Fe524f464d4Aa93255B722292d28e",
+        "address": "0xeC95A28C4BdCf44c08D63761F0519Dc54Dd0Af14",
         "verified": true
     },
     "MopnDataHelper": {
-        "address": "0x41E2cB24fE82AEf9942346779FfAa818b6eB4A0A",
+        "address": "0xB0681A64dbc59fe0dfb17BeC0b5D6d7Bf6B79B59",
         "verified": true,
         "libraries": [
             "TileMath"
         ],
         "constructparams": [
-            "Governance"
+            "0xeC95A28C4BdCf44c08D63761F0519Dc54Dd0Af14"
         ],
         "attributesCheck": [
             {
@@ -34,10 +34,10 @@
         ]
     },
     "MopnBatchHelper": {
-        "address": "0x5E75AbEcd317E8d8F5cd6bff813B3Abc4D486D52",
+        "address": "0x47Bddf355238412503e40Ab71C883Da6A67ebf5C",
         "verified": true,
         "constructparams": [
-            "0xB0681A64dbc59fe0dfb17BeC0b5D6d7Bf6B79B59"
+            "0xeC95A28C4BdCf44c08D63761F0519Dc54Dd0Af14"
         ]
     }
 }
