@@ -9,17 +9,17 @@
         "verified": false
     },
     "Governance": {
-        "address": "0x43AB6f9f671Fe524f464d4Aa93255B722292d28e",
+        "address": "0xc0b64F6050503dF7f0635518a3F5b1BD0e44a080",
         "verified": true
     },
     "MopnDataHelper": {
-        "address": "0x41E2cB24fE82AEf9942346779FfAa818b6eB4A0A",
+        "address": "0xd02F1C8ac72b56B7f84E9E53E63C6bCb05E359D5",
         "verified": true,
         "libraries": [
             "TileMath"
         ],
         "constructparams": [
-            "Governance"
+            "0xc0b64F6050503dF7f0635518a3F5b1BD0e44a080"
         ],
         "attributesCheck": [
             {
@@ -34,10 +34,21 @@
         ]
     },
     "MopnBatchHelper": {
-        "address": "0x5E75AbEcd317E8d8F5cd6bff813B3Abc4D486D52",
+        "address": "0xAbc1b168AAfD6E5Dbb71F045FDAC36f71aeb8882",
         "verified": true,
         "constructparams": [
-            "0xB0681A64dbc59fe0dfb17BeC0b5D6d7Bf6B79B59"
+            "0xc0b64F6050503dF7f0635518a3F5b1BD0e44a080"
+        ],
+        "attributesCheck": [
+            {
+                "expectValue": [
+                    "Governance"
+                ],
+                "attributes": [
+                    "governanceContract"
+                ],
+                "updateMethod": "setGovernanceContract"
+            }
         ]
     }
 }
