@@ -73,6 +73,15 @@ contract MopnDataHelper is Ownable {
         }
     }
 
+    function getAvatarsByAvatarIds(
+        uint256[] memory avatarIds
+    ) public view returns (AvatarDataOutput[] memory avatarDatas) {
+        avatarDatas = new AvatarDataOutput[](avatarIds.length);
+        for (uint256 i = 0; i < avatarIds.length; i++) {
+            avatarDatas[i] = getAvatarByAvatarId(avatarIds[i]);
+        }
+    }
+
     /**
      * @notice get avatar info by nft contractAddress and tokenId
      * @param collection  collection contract address
